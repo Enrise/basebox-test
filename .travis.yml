@@ -2,6 +2,10 @@ language: python
 python:
 - '2.7'
 
+# Run on Trusty (14.04)
+sudo: required
+dist: trusty
+
 env:
   global:
     - BS_PIP_ALLOWED=1
@@ -17,9 +21,9 @@ before_install:
   # End of workaround
   # Basebox base setup
   - sudo mkdir -p /srv/salt
-  - ln -s $PWD/dev/basebox/salt /srv/salt/base
-  - ln -s $PWD/dev/salt /srv/salt/custom
-  - ln -s $PWD/dev/basebox/salt/minion /etc/salt/minion.d/basebox.conf
+  - sudo ln -s $PWD/dev/basebox/salt /srv/salt/base
+  - sudo ln -s $PWD/dev/salt /srv/salt/custom
+  - sudo ln -s $PWD/dev/basebox/salt/minion /etc/salt/minion.d/basebox.conf
   # End basebox
   - curl -L http://bootstrap.saltstack.org | sudo -E sh -s -- stable
   # Cleanup Travis' MySQL leftovers as they conflict with the MariaDB clean install

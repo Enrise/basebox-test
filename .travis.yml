@@ -6,16 +6,19 @@ python:
 sudo: required
 dist: trusty
 
+matrix:
+  fast_finish: true
+  allow_failures:
+    git
+
 env:
   global:
     - BS_PIP_ALLOWED=1
     - BS_ECHO_DEBUG=1
     - SALT_ARGS="-l debug --local --retcode-passthrough"
   matrix:
-    fast_finish: true  
     - SALT_VERSION="stable"
     - SALT_VERSION="stable 2015.8"
-    allow_failures:
     - SALT_VERSION="git"
 
 before_install:

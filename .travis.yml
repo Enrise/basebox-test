@@ -13,9 +13,10 @@ before_install:
   - sudo apt-get update
   # Temporary workaround for vhosting-formula#1
   - sudo mkdir -p /etc/salt/minion.d
+  - echo "mysql.default_file:" "'/etc/mysql/debian.cnf'" | sudo tee -a /etc/salt/minion.d/mysql.conf
   # End of workaround
   # Basebox base setup
-  - mkdir -p /srv/salt
+  - sudo mkdir -p /srv/salt
   - ln -s $PWD/dev/basebox/salt /srv/salt/base
   - ln -s $PWD/dev/salt /srv/salt/custom
   - ln -s $PWD/dev/basebox/salt/minion /etc/salt/minion.d/basebox.conf

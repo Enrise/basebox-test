@@ -20,7 +20,7 @@ before_install:
   - echo "mysql.default_file:" "'/etc/mysql/debian.cnf'" | sudo tee -a /etc/salt/minion.d/mysql.conf
   # End of workaround
   # Basebox base setup
-  - sudo groupadd vagrant  
+  - sudo groupadd vagrant
   - sudo mkdir -p /srv/salt
   - sudo ln -s $PWD/dev/basebox/salt /srv/salt/base
   - sudo ln -s $PWD/dev/salt /srv/salt/custom
@@ -39,7 +39,7 @@ install:
   - sudo salt-call grains.items $SALT_ARGS
 
 script:
-  - sudo -E salt-call state.show_sls $STATE $SALT_ARGS
+  - sudo -E salt-call state.show_highstate $SALT_ARGS
   - sudo -E salt-call state.highstate $SALT_ARGS
 
   # Idempotence check

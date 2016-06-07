@@ -10,7 +10,6 @@ env:
   global:
     - BS_PIP_ALLOWED=1
     - BS_ECHO_DEBUG=1
-  matrix:
     - SALT_ARGS="-l debug --local --retcode-passthrough"
 
 before_install:
@@ -39,7 +38,6 @@ install:
   - sudo salt-call grains.items $SALT_ARGS
 
 script:
-  - sudo -E salt-call state.show_highstate $SALT_ARGS
   - sudo -E salt-call state.highstate $SALT_ARGS
 
   # Idempotence check

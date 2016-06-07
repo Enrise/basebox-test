@@ -1,7 +1,7 @@
 # Configure base settings for your box
 # See the documentation for further details: http://enri.se/basebox-docs
 $vm_hostname = "basebox.dev"
-$vm_ip = "192.168.56.38"
+$vm_ip = "192.168.56.35"
 $vm_box = "ubuntu/trusty64"
 
 # Optional aliases to set (requires vagrant-hostsupdater plugin)

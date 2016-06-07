@@ -20,6 +20,7 @@ before_install:
   - echo "mysql.default_file:" "'/etc/mysql/debian.cnf'" | sudo tee -a /etc/salt/minion.d/mysql.conf
   # End of workaround
   # Basebox base setup
+  - sudo groupadd vagrant  
   - sudo mkdir -p /srv/salt
   - sudo ln -s $PWD/dev/basebox/salt /srv/salt/base
   - sudo ln -s $PWD/dev/salt /srv/salt/custom

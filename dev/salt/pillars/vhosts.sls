@@ -10,4 +10,4 @@ vhosting:
                         - 'sendfile off;'
             mysql_database:
                 basebox:
-                    password: 5HLkp6fIEXu3
+                    password: 0ls5zvPNb3H7

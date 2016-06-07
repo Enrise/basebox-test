@@ -11,6 +11,12 @@ env:
     - BS_PIP_ALLOWED=1
     - BS_ECHO_DEBUG=1
     - SALT_ARGS="-l debug --local --retcode-passthrough"
+  matrix:
+    fast_finish: true  
+    - SALT_VERSION="stable"
+    - SALT_VERSION="stable 2015.8"
+    allow_failures:
+    - SALT_VERSION="git"
 
 before_install:
   - sudo apt-get update
@@ -25,7 +31,7 @@ before_install:
   - sudo ln -s $PWD/dev/salt /srv/salt/custom
   - sudo ln -s $PWD/dev/basebox/salt/minion /etc/salt/minion.d/basebox.conf
   # End basebox
-  - curl -L http://bootstrap.saltstack.org | sudo -E sh -s -- stable
+  - curl -L http://bootstrap.saltstack.org | sudo -E sh -s -- $SALT_VERSION
   # Cleanup Travis' MySQL leftovers as they conflict with the MariaDB clean install
   - sudo apt-get purge mysql-common mysql-server mysql-client -y
   - sudo rm /etc/mysql /var/lib/mysql /var/log/mysql -rf
